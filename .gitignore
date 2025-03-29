@@ -1,0 +1,31 @@
+# Build artifacts
+dsa_c
+dist/
+*.o
+*.d
+$(TARGET)  # Assuming TARGET is defined in your Makefile
+*.exe      # For Windows executables (if applicable)
+
+# Other common build-related files and directories
+build/
+bin/
+lib/
+*.so       # Shared libraries (Linux)
+*.dylib    # Dynamic libraries (macOS)
+*.a        # Static libraries
+*.lo       # Libtool object files
+*.la       # Libtool archive files
+*.pch      # Precompiled headers
+*.obj      # Object files (other compilers)
+*.log      # Log files from build processes
+*.out      # Output files from build processes
+
+# IDE specific build directories (examples)
+.vscode/build/
+.idea/out/
+nbproject/build/
+xcodebuild/
+
+# System files (common to ignore)
+.DS_Store
+Thumbs.db
