@@ -1,19 +1,42 @@
-# Simple Makefile
-
+# Compiler and flags
 CC = gcc
-CFLAGS = -Wall -Wextra -g
-TARGET = dsa_c
-SRCS = src/main.c
-OBJS = $(SRCS:.c=.o)
+CFLAGS = -Wall -Wextra -O2
 
-$(TARGET): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(TARGET)
+# Directories
+SRC_DIR = src
+OBJ_DIR = obj
+BIN_DIR = bin
 
-%.o: %.c
+# Target binary
+TARGET = $(BIN_DIR)/dsa_c
+
+# Find all .c files in src and generate corresponding .o files in obj
+SRCS = $(wildcard $(SRC_DIR)/*.c)
+OBJS = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRCS))
+
+# Default target
+all: $(TARGET)
+
+# Linking
+$(TARGET): $(OBJS) | $(BIN_DIR)
+	$(CC) $(CFLAGS) $^ -o $@
+
+# Compilation
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
+# Create necessary directories
+$(BIN_DIR) $(OBJ_DIR):
+	mkdir -p $@
+
+# Clean build files
 clean:
-	rm -f $(OBJS) $(TARGET)
+	rm -rf $(OBJ_DIR) $(BIN_DIR)
+
+# Rebuild everything
+rebuild: clean all
 
 run: $(TARGET)
-	./$(TARGET)
+	./$(TARGE)
+
+.PHONY: all clean rebuild

@@ -10,6 +10,7 @@ $(TARGET)  # Assuming TARGET is defined in your Makefile
 build/
 bin/
 lib/
+obj/
 *.so       # Shared libraries (Linux)
 *.dylib    # Dynamic libraries (macOS)
 *.a        # Static libraries

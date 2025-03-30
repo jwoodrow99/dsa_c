@@ -21,7 +21,7 @@ make clean
 
 ## Data Structures
 
-- [ ] vector
+- [x] vector
 - [ ] linked_list
 - [ ] double_linked_list
 - [ ] hash_map
